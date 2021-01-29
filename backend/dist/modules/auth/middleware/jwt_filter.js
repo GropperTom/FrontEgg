@@ -5,8 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = __importDefault(require("config"));
-exports.default = (req, res, next) => {
-    const token = req.header('x-auth-token');
+const routes_1 = __importDefault(require("../../../modules/auth/routes"));
+const jwtFilter = (req, res, next) => {
+    if (req.baseUrl.startsWith(routes_1.default.path)) {
+        return next();
+    }
+    const token = req.get('x-auth-token');
+    console.log("token", token);
     if (!token) {
         return res.status(401).json({ msg: 'no token, authorization denied' });
     }
@@ -19,3 +24,4 @@ exports.default = (req, res, next) => {
         res.status(401).json({ msg: "invalid token" });
     }
 };
+exports.default = jwtFilter;

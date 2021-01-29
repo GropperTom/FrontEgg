@@ -15,9 +15,16 @@ const initialState: AuthState = {
 const authReducer = (state: AuthState = initialState, action: AuthActionType): AuthState => {
     switch(action.type) {
         case AuthActions.LOGIN:
+            const token = (action as LoginAction).payload.token;
+            if (token) {
+                localStorage.setItem("token", token);
+            } else {
+                localStorage.removeItem("token");
+            }
+
             return {
                 ...state,
-                token: (action as LoginAction).payload.token,
+                token: token,
                 error: (action as LoginAction).payload.error
             };
         case AuthActions.REGISTER:

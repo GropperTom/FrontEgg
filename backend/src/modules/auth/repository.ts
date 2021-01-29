@@ -1,5 +1,4 @@
 import {IUser, user_model} from "./models/user_model";
-import bcrypt from "bcryptjs"
 
 const getUserByEmail = async (email: string): Promise<IUser> => {
     return user_model.findOne({email});

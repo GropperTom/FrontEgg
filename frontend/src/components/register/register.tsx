@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import "./register.scss"
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -17,31 +17,30 @@ export const Register: React.FC<RegisterProps> = () => {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
 
-    const onEmailChange = (e: any) => {
+    const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     }
 
-    const onNameChange = (e: any) => {
+    const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     }
 
-    const onPasswordChange = (e: any) => {
+    const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     }
 
-    const onRegisterButtonClicked = () => {
+    const onRegisterButtonClicked = (e: FormEvent) => {
+        e.preventDefault();
         dispatch(actions.register(email, password, name))
     }
 
     return (
-        <div className="register-container">
-            <input onClick={onNameChange} type="textarea" placeholder="Full Name..."/>
-            <input onClick={onEmailChange} type="textarea" placeholder="Email Address..."/>
-            <input onClick={onPasswordChange} type="textarea" placeholder="Password..."/>
+        <form onSubmit={onRegisterButtonClicked} className="register-container">
+            <input onChange={onNameChange} value={name} type="text" placeholder="Full Name..."/>
+            <input onChange={onEmailChange} value={email} type="text" placeholder="Email Address..."/>
+            <input onChange={onPasswordChange} value={password} type="text" placeholder="Password..."/>
             <span>{registered ? "You have successfully registered" : ""}</span>
-            <Link to={`/home`}>
-                <button onClick={onRegisterButtonClicked}>Register</button>
-            </Link>
-        </div>
+            <input type="submit" value="Register"/>
+        </form>
     )
 }

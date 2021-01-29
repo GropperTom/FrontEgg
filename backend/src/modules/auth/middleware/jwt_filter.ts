@@ -1,9 +1,15 @@
 import jwt from "jsonwebtoken"
 import config from "config"
 import JwtPayload from "../models/jwt_model";
+import authRouter from "../../../modules/auth/routes"
+import {NextFunction, Request, Response} from "express-serve-static-core";
 
-export default (req: any, res: any, next: any) => {
-    const token = req.header('x-auth-token');
+const jwtFilter = (req: Request, res: Response, next: NextFunction) => {
+    if (req.baseUrl.startsWith(authRouter.path)) {
+        return next();
+    }
+    const token = req.get('x-auth-token');
+    console.log("token", token);
 
     if(!token) {
         return res.status(401).json({msg: 'no token, authorization denied'});
@@ -18,4 +24,6 @@ export default (req: any, res: any, next: any) => {
     catch(e) {
         res.status(401).json({msg: "invalid token"})
     }
-}
+};
+
+export default jwtFilter;

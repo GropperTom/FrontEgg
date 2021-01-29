@@ -1,0 +1,8 @@
+@import "styles/main";
+
+.app-container {
+  width: 100%;
+  height: calc(100vh);
+  background-color: $app-secondary-color;
+  z-index: 1;
+}

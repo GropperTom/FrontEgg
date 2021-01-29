@@ -10,10 +10,11 @@ const login = (email: string, password: string) =>
                 password
             }
             const res = await backendClient.post(url, params);
-
+            const token = res.data['x-auth-token'];
+            const msg = res.data['msg'];
             resolve({
-                token: res.data.token,
-                msg: res.data.msg
+                token,
+                msg
             });
         }
         catch(e) {

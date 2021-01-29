@@ -1,6 +1,5 @@
 import {Router} from "express";
 import controller from "./controller";
-import jwtFilter from "../auth/middleware/jwt_filter"
 const AdminRouter = Router();
 
 const basePath = '/admins';

@@ -19,7 +19,7 @@ const login = async (password: string, email: string): Promise<boolean> => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    return !isMatch;
+    return isMatch;
 }
 
 export default {

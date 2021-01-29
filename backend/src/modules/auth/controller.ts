@@ -17,16 +17,15 @@ const registerNewUser: RequestHandler<core.ParamsDictionary, unknown, {name: str
         const registerSuccess: boolean = await service.registerNewUser(name, email, password);
 
         if(registerSuccess) {
-            res.status(200);
-        }
-        else {
+                res.status(200).send();
+            } else {
             res.status(400).json({msg: "username already exists"});
         }
     }
     catch(e) {
         res.status(400).json({msg: "something went wrong"});
     }
-}
+    };
 
 const login: RequestHandler<core.ParamsDictionary, unknown, {email: string, password: string}> =
     async (req, res, next) => {
@@ -37,7 +36,7 @@ const login: RequestHandler<core.ParamsDictionary, unknown, {email: string, pass
 
     const {email, password} = req.body;
     try {
-        const loginSuccess = await service.login(email, password);
+            const loginSuccess = await service.login(password, email);
 
         if(loginSuccess) {
             const payload: JwtPayload = {
@@ -50,7 +49,7 @@ const login: RequestHandler<core.ParamsDictionary, unknown, {email: string, pass
                     res.status(400).json({msg: "something went wrong"});
                 }
                 else {
-                    res.status(200).json({token});
+                        res.status(200).json({"x-auth-token": token});
                 }
             })
         }

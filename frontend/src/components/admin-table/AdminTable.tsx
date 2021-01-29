@@ -25,7 +25,7 @@ export const AdminTable: React.FC<AdminTableProps> = (props) => {
         <div className={"admin-table-container"}>
             <span>List of employees:</span>
             <div className="search-filter-section">
-                <input className="search-bar" onChange={onSearchChanged} type="textarea" placeholder="Search by name..."/>
+                <input className="search-bar" onChange={onSearchChanged} type="text" placeholder="Search by name..."/>
                 <select onChange={onDropDownChange}>
                     <option value={""}>Filter By Status...</option>
                     {Object.entries(AdminStatusType)

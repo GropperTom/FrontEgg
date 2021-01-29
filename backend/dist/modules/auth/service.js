@@ -21,7 +21,7 @@ const login = async (password, email) => {
         return false;
     }
     const isMatch = await bcryptjs_1.default.compare(password, user.password);
-    return !isMatch;
+    return isMatch;
 };
 exports.default = {
     login,

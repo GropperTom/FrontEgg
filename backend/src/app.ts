@@ -4,6 +4,8 @@ import authRouter from "./modules/auth/routes"
 import {json} from "body-parser";
 import connectMongoDB from "./db";
 import cors from "cors";
+import jwtFilter from "./modules/auth/middleware/jwt_filter";
+
 const app = express();
 
 app.use(json());
@@ -20,6 +22,7 @@ app.use(function (req, res, next) {
 });
 
 // Routers
+app.use("*", jwtFilter);
 app.use(adminRouter.path, adminRouter.router);
 app.use(authRouter.path, authRouter.router);
 

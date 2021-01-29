@@ -9,6 +9,7 @@ const routes_2 = __importDefault(require("./modules/auth/routes"));
 const body_parser_1 = require("body-parser");
 const db_1 = __importDefault(require("./db"));
 const cors_1 = __importDefault(require("cors"));
+const jwt_filter_1 = __importDefault(require("./modules/auth/middleware/jwt_filter"));
 const app = express_1.default();
 app.use(body_parser_1.json());
 // CORS
@@ -21,6 +22,7 @@ app.use(function (req, res, next) {
     next();
 });
 // Routers
+app.use("*", jwt_filter_1.default);
 app.use(routes_1.default.path, routes_1.default.router);
 app.use(routes_2.default.path, routes_2.default.router);
 // Error handling

@@ -16,7 +16,7 @@ const registerNewUser = async (req, res, next) => {
     try {
         const registerSuccess = await service_1.default.registerNewUser(name, email, password);
         if (registerSuccess) {
-            res.status(200);
+            res.status(200).send();
         }
         else {
             res.status(400).json({ msg: "username already exists" });
@@ -33,7 +33,7 @@ const login = async (req, res, next) => {
     }
     const { email, password } = req.body;
     try {
-        const loginSuccess = await service_1.default.login(email, password);
+        const loginSuccess = await service_1.default.login(password, email);
         if (loginSuccess) {
             const payload = {
                 user: {
@@ -45,7 +45,7 @@ const login = async (req, res, next) => {
                     res.status(400).json({ msg: "something went wrong" });
                 }
                 else {
-                    res.status(200).json({ token });
+                    res.status(200).json({ "x-auth-token": token });
                 }
             });
         }
