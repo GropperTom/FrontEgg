@@ -36,6 +36,9 @@ const fillDbWithMock: RequestHandler = async (req, res, next) => {
         await service.fillDbWithMock();
         res.status(200);
     }
+    catch(e) {
+        //
+    }
 }
 
 export default {

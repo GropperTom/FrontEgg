@@ -6,11 +6,10 @@ const getAllAdmins = async (): Promise<IAdmin[]> => {
         return await adminRepo.getAllAdmins()
     }
     catch(e) {
-        throw new Error(""); // NOTE: may not be needed
+        throw new Error("");
     }
 }
 
-// TODO: i put any again in promise
 const setStatus = async (newStatus: string, name: string): Promise<any> => {
     try {
         await adminRepo.setStatus(newStatus, name);

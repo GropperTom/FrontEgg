@@ -8,28 +8,22 @@ import JwtPayload from "./models/jwt_model";
 
 const registerNewUser: RequestHandler<core.ParamsDictionary, unknown, {name: string, email: string, password: string}> =
     async (req, res, next) => {
-        console.log("0");
         const errors = validationResult(req);
     if(!errors.isEmpty()) {
-        console.log("1");
         res.status(400).json({errors: errors.array()});
     }
-console.log("2");
     const {name, email, password} = req.body;
     try {
         const registerSuccess: boolean = await service.registerNewUser(name, email, password);
 
         if(registerSuccess) {
-            console.log("3");
             res.status(200);
         }
         else {
-            console.log("4");
             res.status(400).json({msg: "username already exists"});
         }
     }
     catch(e) {
-        console.log("5");
         res.status(400).json({msg: "something went wrong"});
     }
 }

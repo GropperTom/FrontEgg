@@ -10,16 +10,15 @@ const parseAdminDataDTO = (dto: AdminDataDto): AdminData => {
     }
 }
 
-const fetchAllAdmins = () => //NOTE: tal said to not implement like this
+const fetchAllAdmins = () =>
     new Promise<AdminDataDto[]>(async (resolve, reject) => {
         try {
-            const url = `admins`;  // NOTE: change this to correct URL
+            const url = `admins`;
             const res = await backendClient.get<AdminDataDto[]>(url);
             const admins: AdminData[] = res.data.map((adminDataDto) => parseAdminDataDTO(adminDataDto))
             resolve(admins);
         } catch (e) {
             reject();
-            // NOTE: display error here if needed
         }
     });
 

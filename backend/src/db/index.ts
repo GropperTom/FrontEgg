@@ -8,7 +8,7 @@ const connectMongoDB = async () => {
         useFindAndModify: false,
         useUnifiedTopology: true
     });
-    console.log("Connected successfully to MongoDB"); // NOTE: is this needed
+    console.log("Connected successfully to MongoDB");
 };
 
 export default connectMongoDB;

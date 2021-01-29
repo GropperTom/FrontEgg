@@ -9,7 +9,7 @@ const app = express();
 app.use(json());
 
 // CORS
-app.use(cors()); //NOTE: return to this
+app.use(cors());
 
 // Cache-control
 app.use(function (req, res, next) {

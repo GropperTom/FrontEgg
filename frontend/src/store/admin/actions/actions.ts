@@ -17,16 +17,8 @@ const fetchAllAdmins = (): AdminThunk => async (dispatch) => {
         });
     }
     catch(e) {
-        // NOTE: add handling?
     }
 }
-
-//TODO: continue this
-// const fetchAdmin = ():AdminThunk => async (dispatch) => {
-//     try {
-//         const res: AdminDataDto = await adminApi.
-//     }
-// }
 
 const setStatus = (newStatus: keyof typeof AdminStatusType, name: string): AdminThunk => async (dispatch) => {
     try {
