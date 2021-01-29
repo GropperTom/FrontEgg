@@ -1,0 +1,19 @@
+.admin-table-container {
+  margin-top: 20px;
+
+  .search-filter-section {
+    height: 20px;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .rows-container {
+    overflow-y: scroll;
+    width: 100%;
+    height: 100px;
+    border-style: solid;
+    border-width: 2px;
+  }
+}

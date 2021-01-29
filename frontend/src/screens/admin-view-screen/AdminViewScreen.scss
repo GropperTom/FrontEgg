@@ -1,0 +1,38 @@
+.admin-view-screen-container {
+  height: 100%;
+  width: 100%;
+  //padding: 0px 500px 0px 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    height: 70vw;
+    width: auto;
+  }
+
+  .greeting-row {
+    margin-top: 40px;
+  }
+
+  .current-status{
+    margin-top: 70px;
+  }
+
+  .dropdown {
+    margin-top: 20px;
+  }
+
+  .admin-table {
+    margin-top: 20px;
+  }
+
+  .search-filter-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
