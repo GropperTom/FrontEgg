@@ -1,4 +1,5 @@
 export default interface AdminDataDto {
-    name: string
+    name: string;
+    email: string;
     status: string;
 }

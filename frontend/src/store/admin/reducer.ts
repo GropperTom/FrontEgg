@@ -1,8 +1,8 @@
-import {AdminState, AdminStatusType} from "./types";
-import {AdminAction, AdminActions, AdminActionType, FetchAllAdminsAction, SetStatusAction} from "./actions/types";
+import {AdminState} from "./types";
+import {AdminActions, AdminActionType, FetchAdminAction, FetchAllAdminsAction, SetStatusAction} from "./actions/types";
 
 const initialState: AdminState = {
-    user: {name: "Tom Gropper", status: "WORKING"},
+    user: {name: "", status: "WORKING", email: ""},
     admins: []
 }
 
@@ -17,6 +17,11 @@ const adminReducer = (state: AdminState = initialState, action: AdminActionType)
             return {
                 ...state,
                 admins: (action as FetchAllAdminsAction).payload.admins
+            }
+        case AdminActions.FETCH_ME:
+            return {
+                ...state,
+                user: (action as FetchAdminAction).payload.user
             }
         default:
             return state;

@@ -2,7 +2,8 @@ import {AdminData, AdminStatusType} from "../types";
 
 export enum AdminActions {
     SET_STATUS = 'SET_STATUS',
-    FETCH_ALL_ADMINS = 'FETCH_ALL_ADMINS'
+    FETCH_ALL_ADMINS = 'FETCH_ALL_ADMINS',
+    FETCH_ME = "FETCH_ME"
 }
 
 export interface AdminAction {
@@ -23,10 +24,11 @@ export interface FetchAllAdminsAction extends AdminAction {
 
 export interface FetchAdminAction extends AdminAction {
     payload: {
-        userId: number;
+        user: AdminData;
     }
 }
 
 export type AdminActionType =
     SetStatusAction
-    | FetchAllAdminsAction;
+    | FetchAllAdminsAction
+    | FetchAdminAction;

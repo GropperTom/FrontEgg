@@ -1,4 +1,5 @@
 import authRepo from "./repository"
+import adminRepo from "../admin/repository"
 import bcrypt from "bcryptjs";
 
 const registerNewUser = async (name: string, email: string, password: string): Promise<boolean> => {
@@ -9,6 +10,8 @@ const registerNewUser = async (name: string, email: string, password: string): P
     const salt = await bcrypt.genSalt(10);
     const encryptedPassword = await bcrypt.hash(password, salt);
     await authRepo.registerUser(email, name, encryptedPassword);
+    console.log(email + "1");
+    await adminRepo.addUser(email, name);
     return true;
 }
 

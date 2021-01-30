@@ -1,29 +1,24 @@
 import {IAdmin, AdminModel, adminSchema} from "./models/AdminModel";
 import adminRepo from "./repository"
 
-const getAllAdmins = async (): Promise<IAdmin[]> => {
-    try {
-        return await adminRepo.getAllAdmins()
-    }
-    catch(e) {
-        throw new Error("");
-    }
+const getMe = async (email: string): Promise<IAdmin> => {
+    return await adminRepo.getMe(email)
 }
 
-const setStatus = async (newStatus: string, name: string): Promise<any> => {
-    try {
-        await adminRepo.setStatus(newStatus, name);
-    }
-    catch(e) {
-        //
-    }
+const getAllAdmins = async (): Promise<IAdmin[]> => {
+    return await adminRepo.getAllAdmins()
+}
+
+const setStatus = async (newStatus: string, email: string): Promise<any> => {
+    await adminRepo.setStatus(newStatus, email);
 }
 
 const fillDbWithMock = async (): Promise<any> => {
-    const newRecords: IAdmin[] = [...Array(10).keys()].map(i => {
-        const randomType = ["WORKING", "ON_VACATION", "LUNCH_TIME"][Math.floor(Math.random() * 3)];
+    const newRecords: IAdmin[] = [...Array(20).keys()].map(i => {
+        const randomType = ["WORKING", "ON_VACATION", "LUNCH_TIME", "BUSINESS_TRIP"][Math.floor(Math.random() * 4)];
 
         return new AdminModel({
+            email: i.toString() + "@" + i.toString() + ".com",
             name: i.toString(),
             status: randomType
         });
@@ -34,6 +29,7 @@ const fillDbWithMock = async (): Promise<any> => {
 }
 
 export default {
+    getMe,
     getAllAdmins,
     setStatus,
     fillDbWithMock

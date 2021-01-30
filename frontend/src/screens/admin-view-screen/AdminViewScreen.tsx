@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import "./AdminViewScreen.scss"
-import {AdminTable} from "../../components/admin-table/AdminTable";
+import {AdminTableMUI} from "../../components/admin-table/adminTableMUI";
 import {AdminData, AdminStatusType} from "../../store/admin/types";
 import {useDispatch, useSelector} from "react-redux";
 import actions from "../../store/admin/actions/actions"
@@ -14,11 +14,12 @@ export const AdminViewScreen: React.FC<AdminViewScreenProps> = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(actions.fetchMe());
         dispatch(actions.fetchAllAdmins());
     },[]);
 
     const user: AdminData = useSelector(selectors.getUser);
-    const admins: AdminData[] = useSelector(selectors.getAdmins).filter((admin) => admin.name !== user.name);
+    const admins: AdminData[] = useSelector(selectors.getAdmins).filter((admin) => admin.email !== user.email);
 
     const onDropDownChange = (e: any) => {
         dispatch(actions.setStatus(e.target.value, user.name))
@@ -32,7 +33,7 @@ export const AdminViewScreen: React.FC<AdminViewScreenProps> = () => {
                 <select onChange={onDropDownChange} className="dropdown">
                     {Object.entries(AdminStatusType).map((statusTypeEntry) => (<option value={statusTypeEntry[0]}>{statusTypeEntry[1]}</option>))}
                 </select>
-                <AdminTable admins={admins}/>
+                <AdminTableMUI admins={admins}/>
             </div>
         </div>
     );

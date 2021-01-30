@@ -14,6 +14,7 @@ const registerNewUser: RequestHandler<core.ParamsDictionary, unknown, {name: str
     }
     const {name, email, password} = req.body;
     try {
+        console.log(email + "2");
         const registerSuccess: boolean = await service.registerNewUser(name, email, password);
 
         if(registerSuccess) {

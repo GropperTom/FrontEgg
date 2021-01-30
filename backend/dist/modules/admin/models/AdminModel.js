@@ -4,6 +4,7 @@ exports.AdminModel = exports.adminSchema = void 0;
 const mongoose_1 = require("mongoose");
 exports.adminSchema = {
     name: { type: String, required: true },
+    email: { type: String, required: true },
     status: { type: String, required: true }
 };
 const mongooseAdminSchema = new mongoose_1.Schema(exports.adminSchema);

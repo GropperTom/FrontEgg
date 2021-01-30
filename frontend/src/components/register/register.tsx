@@ -1,9 +1,9 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
 import "./register.scss"
-import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import actions from "../../store/auth/actions/actions"
 import selectors from "../../store/auth/selectors/selectors"
+import {Link} from "react-router-dom";
 
 export interface RegisterProps {
 
@@ -38,9 +38,14 @@ export const Register: React.FC<RegisterProps> = () => {
         <form onSubmit={onRegisterButtonClicked} className="register-container">
             <input onChange={onNameChange} value={name} type="text" placeholder="Full Name..."/>
             <input onChange={onEmailChange} value={email} type="text" placeholder="Email Address..."/>
-            <input onChange={onPasswordChange} value={password} type="text" placeholder="Password..."/>
+            <input onChange={onPasswordChange} value={password} type="password" placeholder="Password..."/>
             <span>{registered ? "You have successfully registered" : ""}</span>
-            <input type="submit" value="Register"/>
+            <div className={"buttons-container"}>
+                <button>Register</button>
+                <Link to={`/`}>
+                    <button>Already registered? Login now!</button>
+                </Link>
+            </div>
         </form>
     )
 }

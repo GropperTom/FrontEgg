@@ -7,8 +7,19 @@ const service_1 = __importDefault(require("./service"));
 const parseToDto = (admin) => {
     return {
         name: admin.name,
-        status: admin.status
+        status: admin.status,
+        email: admin.email
     };
+};
+const getMe = async (req, res, next) => {
+    try {
+        const me = await service_1.default.getMe(req.user.email);
+        const meDto = parseToDto(me);
+        res.status(200).json(meDto);
+    }
+    catch (e) {
+        res.status(400).send();
+    }
 };
 const getAllAdmins = async (req, res, next) => {
     try {
@@ -21,23 +32,25 @@ const getAllAdmins = async (req, res, next) => {
 };
 const setStatus = async (req, res, next) => {
     try {
-        await service_1.default.setStatus(req.body.status, req.params.name);
+        const email = req.user.email;
+        await service_1.default.setStatus(req.body.status, email);
         res.status(200).json();
     }
     catch (e) {
-        //
+        res.status(400).send();
     }
 };
 const fillDbWithMock = async (req, res, next) => {
     try {
         await service_1.default.fillDbWithMock();
-        res.status(200);
+        res.status(200).send();
     }
     catch (e) {
         //
     }
 };
 exports.default = {
+    getMe,
     getAllAdmins,
     setStatus,
     fillDbWithMock

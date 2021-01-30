@@ -14,6 +14,7 @@ const registerNewUser = async (req, res, next) => {
     }
     const { name, email, password } = req.body;
     try {
+        console.log(email + "2");
         const registerSuccess = await service_1.default.registerNewUser(name, email, password);
         if (registerSuccess) {
             res.status(200).send();

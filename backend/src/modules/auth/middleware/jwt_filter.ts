@@ -9,7 +9,6 @@ const jwtFilter = (req: Request, res: Response, next: NextFunction) => {
         return next();
     }
     const token = req.get('x-auth-token');
-    console.log("token", token);
 
     if(!token) {
         return res.status(401).json({msg: 'no token, authorization denied'});

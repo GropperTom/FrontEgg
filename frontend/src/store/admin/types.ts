@@ -6,6 +6,7 @@ export enum AdminStatusType {
 }
 
 export type AdminData = {
+    email: string;
     name: string;
     status: keyof typeof AdminStatusType;
 }

@@ -8,8 +8,9 @@ const controller_1 = __importDefault(require("./controller"));
 const AdminRouter = express_1.Router();
 const basePath = '/admins';
 AdminRouter.get('/', controller_1.default.getAllAdmins);
-AdminRouter.put('/:name/status', controller_1.default.setStatus);
+AdminRouter.put('/status', controller_1.default.setStatus);
 AdminRouter.post('/mock', controller_1.default.fillDbWithMock);
+AdminRouter.get('/me', controller_1.default.getMe);
 exports.default = {
     router: AdminRouter,
     path: basePath

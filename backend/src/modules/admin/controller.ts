@@ -6,7 +6,20 @@ import AdminDataDto from "./dto/AdminDataDto";
 const parseToDto = (admin: IAdmin): AdminDataDto => {
     return {
         name: admin.name,
-        status: admin.status
+        status: admin.status,
+        email: admin.email
+    };
+}
+
+const getMe: RequestHandler = async (req, res, next) => {
+    try {
+        const me: IAdmin = await service.getMe(req.user!.email);
+        const meDto: AdminDataDto = parseToDto(me);
+
+        res.status(200).json(meDto);
+    }
+    catch(e) {
+        res.status(400).send();
     }
 }
 
@@ -23,18 +36,19 @@ const getAllAdmins: RequestHandler = async (req, res, next) => {
 
 const setStatus: RequestHandler = async (req, res, next) => {
     try {
-        await service.setStatus(req.body.status, req.params.name);
+        const email = req.user!.email;
+        await service.setStatus(req.body.status, email);
         res.status(200).json();
     }
     catch(e) {
-        //
+        res.status(400).send();
     }
 }
 
 const fillDbWithMock: RequestHandler = async (req, res, next) => {
     try {
         await service.fillDbWithMock();
-        res.status(200);
+        res.status(200).send();
     }
     catch(e) {
         //
@@ -42,6 +56,7 @@ const fillDbWithMock: RequestHandler = async (req, res, next) => {
 }
 
 export default {
+    getMe,
     getAllAdmins,
     setStatus,
     fillDbWithMock
