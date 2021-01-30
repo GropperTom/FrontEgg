@@ -13,13 +13,14 @@ const parseToDto = (admin: IAdmin): AdminDataDto => {
 
 const getMe: RequestHandler = async (req, res, next) => {
     try {
+        console.log(req.user!.email);
         const me: IAdmin = await service.getMe(req.user!.email);
         const meDto: AdminDataDto = parseToDto(me);
 
         res.status(200).json(meDto);
     }
     catch(e) {
-        res.status(400).send();
+        res.status(400).json({msg: "error"});
     }
 }
 

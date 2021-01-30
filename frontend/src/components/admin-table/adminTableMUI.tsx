@@ -7,16 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import "./AdminTable.scss"
-import Paper from '@material-ui/core/Paper';
-import {Card, makeStyles} from "@material-ui/core";
-
-// const useStyles = makeStyles({
-//     adminTableContainer: {
-//         margin-top: 20px;
-//             overflow-y: scroll;
-//             height: 300px;
-//         },
-//     });
+import {Card} from "@material-ui/core";
 
 export interface AdminTableProps {
     admins: AdminData[]
@@ -24,30 +15,27 @@ export interface AdminTableProps {
 
 export const AdminTableMUI: React.FC<AdminTableProps> = (props) => {
     return (
-        <Card className={"admin-table-container"} variant={"outlined"}>
+        <div className={"admin-table-container"}>
             <TableContainer>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow className={"secondary-color"}>
-                            {/*<TableCell>Dessert (100g serving)</TableCell>*/}
                             <TableCell align="left">Name</TableCell>
                             <TableCell align="right">Status</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {props.admins.map((admin) => (
-                            <TableRow className={"secondary-color"} key={admin.name}>
-                                {/*<TableCell component="th" scope="row">*/}
-                                {/*    {admin.name}*/}
-                                {/*</TableCell>*/}
-                                <TableCell align="left">{admin.name}</TableCell>
-                                <TableCell align="right">{AdminStatusType[admin.status]}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
+                    <div>
+                        <TableBody className={"scrollable"}>
+                            {props.admins.map((admin) => (
+                                <TableRow hover key={admin.name}>
+                                    <TableCell align="left">{admin.name}</TableCell>
+                                    <TableCell align="right">{AdminStatusType[admin.status]}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </div>
                 </Table>
             </TableContainer>
-        </Card>
-
+        </div>
     );
 }

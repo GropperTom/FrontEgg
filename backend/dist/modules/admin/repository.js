@@ -5,6 +5,7 @@ const getAllAdmins = async () => {
     return AdminModel_1.AdminModel.find({});
 };
 const getMe = async (email) => {
+    console.log(email);
     return AdminModel_1.AdminModel.findOne({ email });
 };
 const setStatus = async (status, email) => {

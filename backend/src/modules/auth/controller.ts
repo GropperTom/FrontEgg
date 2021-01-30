@@ -25,7 +25,7 @@ const registerNewUser: RequestHandler<core.ParamsDictionary, unknown, {name: str
     catch(e) {
         res.status(400).json({msg: "something went wrong"});
     }
-    };
+};
 
 const login: RequestHandler<core.ParamsDictionary, unknown, {email: string, password: string}> =
     async (req, res, next) => {
