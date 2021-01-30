@@ -1,3 +1,5 @@
+@import "src/styles/main";
+
 .admin-view-screen-container {
   width: 100%;
   //padding: 0px 500px 0px 500px;
@@ -16,15 +18,23 @@
   }
 
   .greeting-row {
+    color: $app-main-color;
     margin-top: 40px;
   }
 
-  .current-status{
-    margin-top: 70px;
-  }
-
-  .dropdown {
+  .update-status-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    color: $app-main-color;
     margin-top: 20px;
+    width: 440px;
+
+    .dropdown {
+      height: 32px;
+      margin-top: 20px;
+    }
   }
 
   .admin-table {

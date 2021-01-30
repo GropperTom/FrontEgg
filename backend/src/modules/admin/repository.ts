@@ -5,7 +5,6 @@ const getAllAdmins = async (): Promise<IAdmin[]> => {
 };
 
 const getMe = async (email: string): Promise<IAdmin> => {
-    console.log(email);
     return AdminModel.findOne({email});
 }
 

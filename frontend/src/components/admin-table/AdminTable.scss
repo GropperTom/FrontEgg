@@ -1,14 +1,81 @@
 @import "src/styles/main";
 
-.admin-table-container {
-  margin-top: 20px;
-  width: 50vw;
-  max-height: 500px;
-  overflow-y: hidden;
+$scroll-bar-width: 17px;
 
-  .scrollable {
+.search-filter-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 50vw;
+
+  .dropdown {
+    height: 32px;
+  }
+
+  .search-bar {
+    height: 26px;
+  }
+}
+
+.table-header-container {
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+
+  .table-header {
+    width: calc(50vw - #{scroll-bar-width});
+    background-color: $app-main-color;
+
+    .table-header-cell {
+      width: $scroll-bar-width;
+      color: white;
+    }
+  }
+
+  .table-header-filler {
+    height: 56px;
+    width: 17px;
+    background-color: $app-main-color;
+  }
+}
+
+.status-column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+
+
+.admin-table-container {
+  //margin-top: 20px;
+  overflow-y: scroll;
+  height: 500px;
+  width: 50vw;
+
+  Card {
+    background-color: $app-secondary-color;
+  }
+
+  .absolute {
+    position: fixed;
+  }
+
+  .search-filter-section {
+    height: 20px;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .rows-container {
     overflow-y: scroll;
-    max-height: 500px;
-    width: 50vw !important;
+    width: 100%;
+    height: 100px;
+    border-style: solid;
+    border-width: 2px;
   }
 }

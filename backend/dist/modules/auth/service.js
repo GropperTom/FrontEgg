@@ -14,7 +14,6 @@ const registerNewUser = async (name, email, password) => {
     const salt = await bcryptjs_1.default.genSalt(10);
     const encryptedPassword = await bcryptjs_1.default.hash(password, salt);
     await repository_1.default.registerUser(email, name, encryptedPassword);
-    console.log(email + "1");
     await repository_2.default.addUser(email, name);
     return true;
 };

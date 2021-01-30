@@ -5,4 +5,14 @@
   height: calc(100vh);
   background-color: $app-secondary-color;
   z-index: 1;
+
+  .drawer {
+    padding-top: 65px !important;
+    width: 200px;
+
+    .drawer-item {
+      margin: 10px 0px 10px 50px;
+      color: $app-main-color;
+    }
+  }
 }

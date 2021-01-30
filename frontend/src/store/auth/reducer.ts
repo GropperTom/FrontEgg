@@ -1,9 +1,5 @@
 import {AuthState} from "./types";
-import {
-    AuthActions,
-    AuthActionType,
-    LoginAction, RegisterAction,
-} from "./actions/types";
+import {AuthActions, AuthActionType, LoginAction, RegisterAction, SetRegisteredAction,} from "./actions/types";
 
 const initialState: AuthState = {
     token: localStorage.getItem('token') || "",
@@ -32,6 +28,11 @@ const authReducer = (state: AuthState = initialState, action: AuthActionType): A
                 ...state,
                 error: (action as RegisterAction).payload.error,
                 registered: (action as RegisterAction).payload.registered
+            };
+        case AuthActions.SET_REGISTERED:
+            return {
+                ...state,
+                registered: (action as SetRegisteredAction).payload.registered
             };
         default:
             return state;

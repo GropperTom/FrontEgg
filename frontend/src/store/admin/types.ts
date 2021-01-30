@@ -1,8 +1,8 @@
 export enum AdminStatusType {
-    WORKING = 'working',
-    ON_VACATION = 'vacation',
-    LUNCH_TIME = 'lunch time',
-    BUSINESS_TRIP = 'business trip'
+    WORKING = 'Working',
+    ON_VACATION = 'Vacation',
+    LUNCH_TIME = 'Lunch time',
+    BUSINESS_TRIP = 'Business trip'
 }
 
 export type AdminData = {

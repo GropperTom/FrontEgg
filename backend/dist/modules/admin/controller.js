@@ -13,7 +13,6 @@ const parseToDto = (admin) => {
 };
 const getMe = async (req, res, next) => {
     try {
-        console.log(req.user.email);
         const me = await service_1.default.getMe(req.user.email);
         const meDto = parseToDto(me);
         res.status(200).json(meDto);

@@ -8,18 +8,30 @@
   justify-content: space-evenly;
   align-items: center;
 
+  .input-bar {
+    margin-top: 10px;
+  }
+
   .buttons-container {
     margin-top: 20px;
     display: flex;
+    width: 230px;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
   }
 
   button {
+    border-radius: 5px;
+    padding: 5px 10px;
     margin-bottom: 10px;
-    height: 25px;
     background-color: $app-main-color;
     color: white;
+  }
+
+  .register-success-text {
+    color: green;
+    margin-top: 10px;
+    width: 250px;
   }
 }

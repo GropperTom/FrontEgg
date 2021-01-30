@@ -28,7 +28,6 @@ app.use(authRouter.path, authRouter.router);
 
 // Error handling
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.log("Error",err.message);
     res.status(500).json({message: err.message});
 });
 

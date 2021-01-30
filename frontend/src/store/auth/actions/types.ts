@@ -1,10 +1,17 @@
 export enum AuthActions {
     REGISTER = "REGISTER",
-    LOGIN = 'LOGIN'
+    LOGIN = 'LOGIN',
+    SET_REGISTERED = 'SET_REGISTERED'
 }
 
 export interface AuthAction {
     type: AuthActions;
+}
+
+export interface SetRegisteredAction extends AuthAction {
+    payload: {
+        registered: boolean;
+    }
 }
 
 export interface RegisterAction extends AuthAction {
@@ -22,5 +29,6 @@ export interface LoginAction extends AuthAction {
 }
 
 export type AuthActionType =
-    RegisterAction
+    SetRegisteredAction
+    | RegisterAction
     | LoginAction;

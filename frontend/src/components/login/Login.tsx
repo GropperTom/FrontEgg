@@ -39,12 +39,12 @@ export const Login: React.FC<loginProps> = () => {
 
     return (
         <form onSubmit={onLoginButtonClicked} className="login-container">
-            <input onChange={onEmailChange} value={email} type="text" placeholder="Email Address..."/>
-            <input onChange={onPasswordChange} value={password} type="password" placeholder="Password..."/>
+            <input className={"input-bar"} onChange={onEmailChange} value={email} type="text" placeholder="Email Address..."/>
+            <input className={"input-bar"} onChange={onPasswordChange} value={password} type="password" placeholder="Password..."/>
             <div className={"buttons-container"}>
-                <button>Login</button>
+                <button><b>Login</b></button>
                 <Link to={`/register`}>
-                    <button>New user? Register!</button>
+                    <button style={{margin: 0}}><b>New user? Register!</b></button>
                 </Link>
             </div>
 

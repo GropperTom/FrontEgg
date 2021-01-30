@@ -31,8 +31,6 @@ const register = (email: string, password: string, name: string) =>
                 email,
                 password
             }
-            console.log(email + "3");
-            console.log(params + "4");
             const res = await backendClient.post(url, params);
 
             resolve({
