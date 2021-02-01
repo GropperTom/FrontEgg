@@ -15,7 +15,7 @@ Node(TS) - the premier JavaScript web server
     - Register
     - better CSS styling
     - jwt
-- after: the implementation after the submission time. Finished implmenting the missing parts. Added several functionalities. Improved design.
+- After: the implementation after the submission time. Finished implmenting the missing parts. Added several functionalities. Improved design.
 
 Run instructions
 Clone the repository.
